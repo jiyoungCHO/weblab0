@@ -11,7 +11,7 @@
     <?php
     $filename="dictionary1.tsv";
     $lines=file($filename);
-    $size=filesize("dictionary1.tsv");
+    $size=filesize($filename);
     ?>
 <!-- Ex. 1: File of Dictionary -->
     <p>
@@ -114,9 +114,7 @@
             }
             if(isset($_GET["orderby"]))
                 $orderby=$_GET["orderby"];
-            else if($_GET["orderby"]==" ")
-                $orderby=0;
-            else
+            if($orderby==" ")
                 $orderby=0;
             $result=getWordsByOrder($lines,$orderby);
         ?>
@@ -152,10 +150,12 @@
         if(isset($_GET["newWord"])&&isset($_GET["meaning"])){
             $newWord=$_GET["newWord"];
             $meaning=$_GET["meaning"];
+            $word="\n".$newWord."\t".$meaning;
+            file_put_contents("dictionary1.tsv", $word, FILE_APPEND);
         }
         if(isset($newWord)&&isset($meaning)){
         ?>    
-        <p>Adding a word is success!</p>
+        <p>Adding a word <?=$word?> is success!</p>
         <?php
         }
         else{
