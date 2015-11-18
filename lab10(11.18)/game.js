@@ -93,11 +93,13 @@ function selectToResult(){
 	var result1=result.split("/");
 	var cor=result1[0];
 	var tot=result1[1];
-	for(i=0;i<numberOfTarget;i++){
-		blocks[selectedBlocks[i]].removeClassName("selected");
+	for(i=0;i<selectedBlocks.length;i++){
+		if(blocks[selectedBlocks[i]].hasClassName("selected")){
+			blocks[selectedBlocks[i]].removeClassName("selected");
+		}
 	}
 	for(i=0;i<numberOfTarget;i++){
-		for(j=0;j<numberOfTarget;j++){
+		for(j=0;j<selectedBlocks.length;j++){
 			if(targetBlocks[i]==selectedBlocks[j]){
 				cor++;
 			}
