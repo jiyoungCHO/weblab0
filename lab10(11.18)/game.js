@@ -36,6 +36,14 @@ function startToSetTarget(){
 	timer=0;
 	targetBlocks=[];
 	selectedBlocks=[];
+	var blocks=$$(".block");
+	for(var i=0;i<numberOfTarget;i++){
+		var s = Math.floor(Math.random()*9);
+		while(blocks[s].hasClassName("target")){
+			s=Math.floor(Math.random()*9);
+		}
+		targetBlocks[i]=s;
+	}
 	timer=setTimeout(setTargetToShow,interval);
 }
 
@@ -43,11 +51,7 @@ function setTargetToShow(){
 	$("state").innerHTML="Memorize!";
 	var blocks=$$(".block");	
 	for(var i=0;i<numberOfTarget;i++){
-		var s = Math.floor(Math.random()*9);
-		while(blocks[s].hasClassName("target")){
-			s=Math.floor(Math.random()*9);
-		}
-		targetBlocks[i]=s;
+		var s=targetBlocks[i];
 
 		blocks[s].addClassName("target");
 	}
