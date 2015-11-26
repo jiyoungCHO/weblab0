@@ -33,7 +33,7 @@ for ($i = 0; $i < count($lines); $i++){
 }
 
 
-for ($i = 1; $i < count($super); $i++) {
+for ($i = 1; $i < count($super)+1; $i++) {
 	list($title, $artist, $rank, $genre, $time) = $super[$i];
 	if ($rank <= $top) {
 		print "\t<song rank=\"$rank\">\n";
