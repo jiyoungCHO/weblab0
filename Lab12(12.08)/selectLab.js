@@ -28,29 +28,39 @@ function labSelect(drag, drop, event) {
 
 	var num = $$("#selectpad > img").length;
 
-	if(drop.id == "selectpad" && drag.parentNode.id == "labs") {									
-		if(num < 3) {
-			drop.appendChild(drag);	
-			var li = document.createElement("li");
-			
-			li.innerHTML = drag.alt;
-			$("selection").appendChild(li);
-			$("selection").lastChild.pulsate({
-				delay: 0.5,
-				duration: 1.0
-			});
+	if(drop.id == "selectpad" ) {
+		if(drag.parentNode.id == "labs"){
+			if(num < 3) {
+				drop.appendChild(drag);	
+				var li = document.createElement("li");
+				
+				li.innerHTML = drag.alt;
+				$("selection").appendChild(li);
+				$("selection").lastChild.pulsate({
+					delay: 0.5,
+					duration: 1.0
+				});
 
+			}
+		}	
+		else{						
+			
 		}	
 	}
 
-	if(drop.id == "labs" && drag.parentNode.id == "selectpad") {
-		drop.appendChild(drag);
-		var liall = $$("#selection > li");												
-		var tmp;
-		for(var i=0; i<liall.length; i++) {
-			if(drag.alt == liall[i].innerHTML) {
-				$("selection").removeChild($("selection").childNodes[i]);	
+	if(drop.id == "labs" ) {
+		if(drag.parentNode.id == "selectpad"){
+			drop.appendChild(drag);
+			var liall = $$("#selection > li");												
+			var tmp;
+			for(var i=0; i<liall.length; i++) {
+				if(drag.alt == liall[i].innerHTML) {
+					$("selection").removeChild($("selection").childNodes[i]);	
+				}
 			}
+		}
+		else{
+			
 		}
 
 	}
